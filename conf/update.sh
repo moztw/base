@@ -21,7 +21,8 @@ do
 	if [ -e $ROOT/$REPO/.hg ]
 	then
 		# pull everything down then update to default
-		hg pull -u -r default
+		hg pull -u
+		hg update -c -r default
 		# show tip information
 		hg tip
 	fi
