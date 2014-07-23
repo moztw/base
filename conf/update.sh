@@ -1,5 +1,6 @@
 #!/bin/bash
 export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 ROOT='/home/moztw/translate/var/repo'
 
 echo
@@ -38,16 +39,16 @@ done
 for PRJID in 2 4 5 6 7 8 9 11 12 13 14 15
 do  
 	echo
-	echo 'Importing l10n-central and l10n-aurora projects...'
+	echo "Importing l10n-central and l10n-aurora projects... PRJID $PRJID"
 	/usr/bin/php /home/moztw/translate/www/narro/includes/narro/importer/narro-cli.php --import --minloglevel 3 --project $PRJID --user 1 --check-equal --import-unchanged-files --template-lang en-US --translation-lang zh-TW --template-directory /home/moztw/translate/www/narro/data/import/$PRJID/en-US --translation-directory /home/moztw/translate/www/narro/data/import/$PRJID/zh-TW
 	echo
 	echo 'Done.'
 done
 
-for PRJID in 26 32 33
+for PRJID in 26 33 34
   do
     echo
-    echo 'Importing Gaia projects...'
+    echo "Importing Gaia projects... PRJID $PRJID"
     /usr/bin/php /home/moztw/translate/www/narro/includes/narro/importer/narro-cli.php --import --minloglevel 3 --project $PRJID --user 1 --check-equal --import-unchanged-files --template-lang en-US --translation-lang zh-TW --template-directory /home/moztw/translate/www/narro/data/import/$PRJID/en-US --translation-directory /home/moztw/translate/www/narro/data/import/$PRJID/zh-TW
     echo
     echo 'Done.'
