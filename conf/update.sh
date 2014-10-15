@@ -45,7 +45,7 @@ do
 	echo 'Done.'
 done
 
-for PRJID in 26 33 34
+for PRJID in 26 34 35
   do
     echo
     echo "Importing Gaia projects... PRJID $PRJID"
