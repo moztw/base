@@ -18,7 +18,7 @@ OPT_WWW=0
 OPT_STAGE=0
 OPT_TRANSLATE=0
 OPT_IRCLOG=0
-OPT_PHOTOS=0
+#OPT_PHOTOS=0
 OPT_DEMO=0
 OPT_WIKI=0
 
@@ -37,8 +37,8 @@ for var in "$@"; do
 		OPT_DEMO=1
 	elif [ $var = "irclog" ]; then
 		OPT_IRCLOG=1
-	elif [ $var = "photos" ]; then
-		OPT_PHOTOS=1
+#	elif [ $var = "photos" ]; then
+#		OPT_PHOTOS=1
 	elif [ $var = "translate" ]; then
 		OPT_TRANSLATE=1
 	elif [ $var = "wiki" ]; then
@@ -101,10 +101,10 @@ elif [ 1 == $OPT_IRCLOG ]; then
 	REPODIR="/home/moztw/repo/irclog.moztw.org"
 	WEBROOT="/home/moztw/repo/irclog.moztw.org"
 	URLROOT="http://irclog.moztw.org"
-elif [ 1 == $OPT_PHOTOS ]; then
-	REPODIR="/home/moztw/repo/photos.moztw.org"
-	WEBROOT="/home/moztw/repo/photos.moztw.org"
-	URLROOT="http://photos.moztw.org"
+#elif [ 1 == $OPT_PHOTOS ]; then
+#	REPODIR="/home/moztw/repo/photos.moztw.org"
+#	WEBROOT="/home/moztw/repo/photos.moztw.org"
+#	URLROOT="http://photos.moztw.org"
 elif [ 1 == $OPT_DEMO ]; then
 	REPODIR="/home/moztw/repo/demo.moztw.org"
 	WEBROOT="/home/moztw/repo/demo.moztw.org"
@@ -129,8 +129,8 @@ elif [ 1 == $OPT_IRCLOG ]; then
 	echo "Updating website: irclog"
 elif [ 1 == $OPT_TRANSLATE ]; then
 	echo "Updating website: translate"
-elif [ 1 == $OPT_PHOTOS ]; then
-	echo "Updating website: photos"
+#elif [ 1 == $OPT_PHOTOS ]; then
+#	echo "Updating website: photos"
 elif [ 1 == $OPT_WIKI ]; then
 	echo "Updating website: wiki"
 elif [ 1 == $OPT_BASE ]; then
