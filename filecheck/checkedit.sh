@@ -1,19 +1,25 @@
-#!/bin/sh
-DATE=`date +"%Y-%m-%d %T"`
+#!/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+HOSTNAME=$(hostname)
+DATE=$(date +"%Y-%m-%d %T")
+LOGFILE=/tmp/file_log.log
+FCHECK=/usr/sbin/fcheck
 
-if [ $USER != root ]; then
-  echo 'You must run this script as root (try sudo)'
-  exit 0
+# Only let root run this script
+if [ $EUID -ne 0 ]; then
+  echo "You must run this script as root (try sudo)" 1>&2
+  exit 1
 fi
-      
 
-if [ -e /tmp/file_log.log ]; then
-  cat /tmp/file_log.log | mail -s "($DATE) MozTW.org File Change Info" admin@mail.moztw.org
-  rm -rf /tmp/file_log.log
+$FCHECK -ar > $LOGFILE
+$FCHECK -arc
+
+FCHECKSTATUS=$(tail -n 2 $LOGFILE | head -n 1)
+if [ "$FCHECKSTATUS" = "STATUS:passed..." ]; then
+  echo "" | mail -s "($DATE) MozTW.org File Change Info - None EOM" admin@mail.moztw.org
   exit 1
 else
-  echo "" | mail -s "($DATE) MozTW.org File Change Info - None EOM" admin@mail.moztw.org
+  mail -s "($DATE) MozTW.org File Change Info" admin@mail.moztw.org < $LOGFILE
+  rm -rf $LOGFILE
   exit 0
 fi
- 
-
