@@ -12,7 +12,7 @@ if [ $EUID -ne 0 ]; then
 fi
 
 $FCHECK -ar > $LOGFILE
-$FCHECK -arc
+$FCHECK -arc > /dev/null 2>&1
 
 FCHECKSTATUS=$(tail -n 2 $LOGFILE | head -n 1)
 if [ "$FCHECKSTATUS" = "STATUS:passed..." ]; then
