@@ -46,7 +46,7 @@
 
 #define CMD_XMLNEWS                                                     \
   "cd " WEBROOT " && "                                                  \
-  "echo 'Update XML News...' && " SCRIPTROOT "/genxmlnews.pl " WEBROOT "/xmlnews.rdf && " \
+  "echo 'Update XML News...' && " SCRIPTROOT "/genxmlnews.pl " WEBROOT "/xmlnews.xml && " \
 
 #define CMD_CACHE                                                       \
   "cd " WEBROOT " && "                                                  \
