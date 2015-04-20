@@ -7,16 +7,16 @@ use strict;
 my $wwwroot = $ARGV[0];
 my $fnLatest = $wwwroot . '/inc/news.html';
 my $fnAll = $wwwroot . '/news/index.shtml';
-my $maxEntries = 10;
+my $maxEntries = 15;
 
 my $HTTP_HEADER=<<HERE;
-Content-Type: text/xml; charset=UTF-8
+Content-Type: application/rss+xml; charset=UTF-8
 
 HERE
 
 my $RDF_HEADER=<<HERE;
 <?xml version="1.0" encoding="utf-8" ?>
-<rss version="0.92">
+<rss version="2.0">
 <channel>
     <title>MozTW.org: Mozilla Taiwan</title>
     <link>http://moztw.org/</link>
@@ -56,15 +56,15 @@ for (@dats) {
 	$_ =~ s/<!--.*-->//g;
 	$_ =~ s/<[^>]*>//g;
 	$e{title} = "$lastdate: " . $_;
-	$l = 'http://www.moztw.org/' if !$l;
+	$l = 'http://moztw.org/' if !$l;
 	if ($l !~ /^http/) {
 		# local ref
 		if ($l =~ /^\//) {
 			# absolute
-			$l = 'http://www.moztw.org' . $l;
+			$l = 'http://moztw.org' . $l;
 		} else {
 			# relative
-			$l = 'http://www.moztw.org/' . $l;
+			$l = 'http://moztw.org/' . $l;
 		}
 	}
 	$e{link} = $l;
