@@ -4,6 +4,7 @@ ROOT=$1
 TMPDIR=/tmp
 INCDIR=$ROOT/inc
 URLROOT=$2
+REBUILD=$3
 
 PATH=/usr/local/bin:/usr/bin:$PATH
 export PATH
@@ -22,7 +23,7 @@ for X in `find . -name "*.shtml"`; do
   #continue
 
   # determine if file is newer
-  if [ "$1" != "rebuild" -a -f $X2 ] ; then
+  if [ "$3" != "rebuild" -a -f $X2 ] ; then
     if [ $X -ot $X2 -a $INCDIR -ot $X2 ]
     then
       continue
