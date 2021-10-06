@@ -32,5 +32,5 @@ for X in `find . -name "*.shtml"`; do
   #mv -f $X2 $X2.old
   #rm -f $X2
   mv -f $X2 $TMPDIR/. 2>/dev/null
-  wget -nv $URLROOT/$X -O $X2
+  wget -nv $URLROOT/$X -O $X2 --no-check-certificate
 done
